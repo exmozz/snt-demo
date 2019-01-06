@@ -1,29 +1,36 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <toolbar />
+
+    <navigation />
+
+    <v-content>
+      <v-container fluid>
+        <v-progress-linear :indeterminate="true" v-if="this.$store.state.loading"></v-progress-linear>
+        <router-view />
+      </v-container>
+    </v-content>
+
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+
+
+import Toolbar from "./components/Toolbar";
+import Navigation from "./components/Navigation";
+export default {
+  name: 'App',
+  components: {
+    Navigation,
+    Toolbar
+  },
+  data () {
+    return {
     }
+  },
+  created() {
+    this.$store.state.loading = false;
   }
 }
-</style>
+</script>

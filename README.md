@@ -1,4 +1,4 @@
-# spa
+# SNT-demo
 
 ## Project setup
 ```
